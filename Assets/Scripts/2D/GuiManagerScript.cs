@@ -1085,7 +1085,7 @@ public class GuiManagerScript : MonoBehaviour
 
             if (Manager.CurrentDevMode != DevMode.None)
             {
-                Manager.HandleKeyUp(KeyCode.D, false, false, ActivateDebugOverlay);
+                Manager.HandleKeyUp(KeyCode.E, false, false, ActivateDebugOverlay);
             }
         }
 
