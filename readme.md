@@ -54,6 +54,7 @@ Note that the results from using a heightmap to generate a world might not perfe
 - O : Cycle between 'Population' map overlays
 - P : Cycle between 'Polity' map overlays
 - G : Enable 'General' map overlay
+- E : Enable 'Debug' map overlay (debug must not be set to 'none')
 - Tab : Cycle between overlay subtypes when available
 - 1: Set simulation speed to 'Max 1 Day/sec'
 - 2: Set simulation speed to 'Max 7 Days/sec'
