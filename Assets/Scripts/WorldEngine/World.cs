@@ -1786,6 +1786,11 @@ public class World : ISynchronizable, IWorldDateGetter
         return group;
     }
 
+    public List<CellGroup> GetAllGroups()
+    {
+        return new List<CellGroup>(_cellGroups.Values);
+    }
+
 #if DEBUG
     public delegate void AddGroupToUpdateCalledDelegate(string callingMethod);
 

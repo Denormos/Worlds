@@ -33,6 +33,16 @@ public class InfoPanelScript : MonoBehaviour
         if (_infoTextMinimized)
             return;
 
+        //Not sure if this is good and efficient code
+        
+        int population = 0;
+        foreach(CellGroup group in world.GetAllGroups()){
+            population += group.Population;
+        }
+
+        InfoText.text += "\nTotal Population of the World: " + population;
+        
+
         if (Manager.CurrentWorld.SelectedCell != null)
         {
             AddCellDataToInfoPanel(Manager.CurrentWorld.SelectedCell);
