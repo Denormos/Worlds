@@ -23,3 +23,9 @@ sovereign over what (in the eye of the ruler):
 idea for rivers
 
 when expanding flow, explore two cells ahead instead of just one and carve a path in the middle cell if water could flow through it
+
+"Documentation":
+
+group: The "group" of people inhabiting a cell
+
+culture: A groups skills, knowledge, discoveries, activities and preferences are part of their culture

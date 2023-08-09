@@ -28,7 +28,8 @@ public enum PlanetView
 {
     Elevation = 0,
     Biomes = 1,
-    Coastlines = 2
+    Coastlines = 2,
+    Debug = 3
 }
 
 public enum PlanetOverlay
@@ -3248,6 +3249,10 @@ public class Manager
                 color = GenerateCoastlineColor(cell);
                 break;
 
+            case PlanetView.Debug:
+                color = GenerateDebugColor(cell);
+                break;
+
             default:
                 throw new System.Exception("Unsupported Planet View Type");
         }
@@ -3635,6 +3640,20 @@ public class Manager
         }
 
         return color * slantFactor * altitudeFactor;
+    }
+
+    private static Color GenerateDebugColor(TerrainCell cell)
+    {
+        Color color = Color.white;
+
+        if(cell.IsBelowSeaLevel)
+        {
+            color.r = 0.419f;
+            color.g = 0.36f;
+            color.b = 0.647f;
+        }
+        
+        return color;
     }
 
     private static bool IsRegionBorder(Region region, TerrainCell cell)
@@ -4939,7 +4958,9 @@ public class Manager
 
                     float knowledgeFactor = Mathf.Clamp01((knowledgeValue - startValue) / (minValue - startValue));
 
-                    cellColor = (cellColor * knowledgeFactor) + densityColorSubOptimal * (1f - knowledgeFactor);
+                    //Experimenting
+                    cellColor = knowledgeValue<3?densityColorSubOptimal:cellColor;
+                    //cellColor = (cellColor * knowledgeFactor) + densityColorSubOptimal * (1f - knowledgeFactor);
                 }
                 else
                 {

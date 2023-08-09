@@ -1298,6 +1298,11 @@ public class GuiManagerScript : MonoBehaviour
         SetView(PlanetView.Coastlines);
     }
 
+    public void SetDebugView()
+    {
+        SetView(PlanetView.Debug);
+    }
+
     private void ReadKeyboardInput()
     {
         if (_backgroundProcessActive)
