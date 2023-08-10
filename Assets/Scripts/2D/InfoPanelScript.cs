@@ -40,7 +40,19 @@ public class InfoPanelScript : MonoBehaviour
             population += group.Population;
         }
 
-        InfoText.text += "\nTotal Population of the World: " + population;
+        string populationstr = population.ToString();
+
+        if(populationstr.Length>3){
+            populationstr = populationstr.Insert(populationstr.Length-3,"."); 
+            if(populationstr.Length>7){
+                populationstr = populationstr.Insert(populationstr.Length-7,".");
+                if(populationstr.Length>11){
+                    populationstr = populationstr.Insert(populationstr.Length-11,".");
+                }
+            }
+        }
+        
+        InfoText.text += "\nTotal Population of the World: " + populationstr;
         
 
         if (Manager.CurrentWorld.SelectedCell != null)

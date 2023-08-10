@@ -29,3 +29,5 @@ when expanding flow, explore two cells ahead instead of just one and carve a pat
 group: The "group" of people inhabiting a cell
 
 culture: A groups skills, knowledge, discoveries, activities and preferences are part of their culture
+
+agents: clan leaders
