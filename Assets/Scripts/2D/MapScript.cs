@@ -18,6 +18,7 @@ public class MapScript : MonoBehaviour
     public Material DrainageMaterial;
 
     public UnityEvent ActivatedBrush;
+    public UnityEvent DeactivatedBrush;
 
     private bool _isDraggingMap = false;
     private Vector2 _beginDragPosition;
@@ -311,6 +312,7 @@ public class MapScript : MonoBehaviour
         if (pointerData.button == PointerEventData.InputButton.Left)
         {
             Manager.ActivateEditorBrush(false);
+            DeactivatedBrush.Invoke();
         }
     }
 
