@@ -311,8 +311,10 @@ public class MapScript : MonoBehaviour
 
         if (pointerData.button == PointerEventData.InputButton.Left)
         {
-            Manager.ActivateEditorBrush(false);
-            DeactivatedBrush.Invoke();
+            if(Manager.GameMode == GameMode.Editor){
+                Manager.ActivateEditorBrush(false);
+                DeactivatedBrush.Invoke();
+            }
         }
     }
 
