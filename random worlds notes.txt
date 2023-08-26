@@ -1,3 +1,4 @@
+drtardigrade:
 random 'worlds' notes
 
 evolution of rulership
@@ -23,6 +24,15 @@ sovereign over what (in the eye of the ruler):
 idea for rivers
 
 when expanding flow, explore two cells ahead instead of just one and carve a path in the middle cell if water could flow through it
+
+
+Denormos:
+Links with sources for new features/changes
+
+https://acoup.blog/2020/01/17/collections-the-fremen-mirage-part-i-war-at-the-dawn-of-civilization/ (entire series+comments)
+
+https://www.reddit.com/r/MapPorn/comments/15bq20p/the_state_of_the_world_around_1000_bc/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=1
+(post isnt very accurate, comments)
 
 "Documentation":
 
