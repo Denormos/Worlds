@@ -41,3 +41,7 @@ group: The "group" of people inhabiting a cell
 culture: A groups skills, knowledge, discoveries, activities and preferences are part of their culture
 
 agents: clan leaders
+
+Polity: state
+
+Territory: Area of a polity

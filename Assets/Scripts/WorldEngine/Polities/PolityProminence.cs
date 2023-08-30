@@ -534,7 +534,7 @@ public class PolityProminence
     {
         foreach (PolityProminence p in group.GetPolityProminences())
         {
-            if (p == this)
+            if (p == this||!NeighborProminences.Contains(p))
             {
                 continue;
             }

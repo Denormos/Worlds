@@ -1441,6 +1441,11 @@ public class Manager
         });
     }
 
+    public static void ResetWorld()
+    {
+        CurrentWorld.ResetWorld();
+    }
+
     public static void RegenerateWorld(GenerationType type)
     {
         WorldIsReady = false;

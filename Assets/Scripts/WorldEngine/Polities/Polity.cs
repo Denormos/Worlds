@@ -418,6 +418,8 @@ public abstract class Polity : ISynchronizable
             World.AddGroupToPostUpdate_AfterPolityUpdate(group);
         }
 
+        Territory = null;
+
         Info.Polity = null;
 
         StillPresent = false;
