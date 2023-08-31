@@ -1700,10 +1700,9 @@ public class GuiManagerScript : MonoBehaviour
         Manager.ResetWorld();
         
         MainMenuDialogPanelScript.SetVisible(false);
-        //AddPopulationDialogScript.SetVisible(true);
+
         _hasToSetInitialPopulation = true;
-        /* OpenModeSelectionDialogRequested.Invoke();
-        InterruptSimulation(true); */
+        
         OpenModeSelectionDialog();
     }
 
