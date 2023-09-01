@@ -3320,6 +3320,8 @@ public class World : ISynchronizable, IWorldDateGetter
         PolityCount = 0;
         _factionInfos.Clear();
         FactionCount = 0;
+
+        MostPopulousGroup = null;
         
         CulturalKnowledgeInfoList.Clear();
         _culturalKnowledgeIdList.Clear();
