@@ -121,10 +121,7 @@ public class SelectionPanelScript : MonoBehaviour
     {
         foreach (Toggle toggle in Toggles.Values)
         {
-            toggle.gameObject.SetActive(false);
-            toggle.transform.SetParent(null);
-
-            GameObject.Destroy(toggle);
+            Destroy(toggle.gameObject);
         }
 
         Toggles.Clear();
