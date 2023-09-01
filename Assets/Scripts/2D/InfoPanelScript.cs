@@ -1296,6 +1296,30 @@ public class InfoPanelScript : MonoBehaviour
         }
     }
 
+    private void AddCellDataToInfoPanel_DateofArrival(TerrainCell cell)
+    {
+        InfoText.text += "\n";
+
+        if (cell.Group == null)
+        {
+            InfoText.text += "\n\tNo population at location";
+
+            return;
+        }
+
+        int population = cell.Group.Population;
+
+        if (population <= 0)
+        {
+            InfoText.text += "\n\tNo population at location";
+
+            return;
+        }
+        InfoText.text += "\n";
+        InfoText.text += "Date of human arrival: " + Manager.GetDateString(cell.Group.DateofHumanArrival);
+        InfoText.text += "\n";
+    }
+
     private void AddCellDataToInfoPanel(TerrainCell cell)
     {
         int longitude = cell.Longitude;
@@ -1339,6 +1363,11 @@ public class InfoPanelScript : MonoBehaviour
             AddCellDataToInfoPanel_General(cell);
         }
 
+        if(Manager.PlanetOverlay == PlanetOverlay.HumanArrival)
+        {
+            AddCellDataToInfoPanel_DateofArrival(cell);
+        }
+
         if ((Manager.PlanetOverlay == PlanetOverlay.PopDensity) ||
             (Manager.PlanetOverlay == PlanetOverlay.PopChange))
         {
@@ -1367,7 +1396,8 @@ public class InfoPanelScript : MonoBehaviour
 
         if ((Manager.PlanetOverlay == PlanetOverlay.PolityCoreRegions) ||
             (Manager.PlanetOverlay == PlanetOverlay.PolityTerritory) ||
-            (Manager.PlanetOverlay == PlanetOverlay.PolityAdminCost))
+            (Manager.PlanetOverlay == PlanetOverlay.PolityAdminCost) ||
+            (Manager.PlanetOverlay == PlanetOverlay.FormationDate))
         {
             AddCellDataToInfoPanel_PolityTerritory(cell);
         }

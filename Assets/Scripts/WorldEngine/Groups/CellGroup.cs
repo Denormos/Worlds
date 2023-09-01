@@ -276,6 +276,8 @@ public class CellGroup : Identifiable, ISynchronizable, IFlagHolder
         }
     }
 
+    public long DateofHumanArrival;
+
     public CellGroup()
     {
         Manager.UpdateWorldLoadTrackEventCount();

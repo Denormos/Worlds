@@ -32,6 +32,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
     public Toggle DistancesToCoresToggle;
     public Toggle PolityClustersToggle;
     public Toggle ClusterAdminCostToggle;
+    public Toggle FormationDateToggle;
 
     public Toggle TemperatureToggle;
     public Toggle RainfallToggle;
@@ -49,6 +50,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
     public Toggle MigrationToggle;
     public Toggle MigrationPressureToggle;
     public Toggle PolityMigrationPressureToggle;
+    public Toggle HumanArrivalToggle;
 
     public Toggle DisplayRoutesToggle;
     public Toggle DisplayGroupActivityToggle;
@@ -114,6 +116,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
             PolityAdminCostToggle.isOn = false;
             PolityClustersToggle.isOn = false;
             ClusterAdminCostToggle.isOn = false;
+            FormationDateToggle.isOn = false;
         }
 
         if (!MiscDataToggle.isOn)
@@ -136,6 +139,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
             MigrationToggle.isOn = false;
             MigrationPressureToggle.isOn = false;
             PolityMigrationPressureToggle.isOn = false;
+            HumanArrivalToggle.isOn = false;
         }
     }
 
@@ -180,7 +184,8 @@ public class OverlayDialogPanelScript : MenuPanelScript
             (Manager.PlanetOverlay == PlanetOverlay.PolityCulturalDiscovery) ||
             (Manager.PlanetOverlay == PlanetOverlay.PolityCluster) ||
             (Manager.PlanetOverlay == PlanetOverlay.PolityAdminCost) ||
-            (Manager.PlanetOverlay == PlanetOverlay.ClusterAdminCost)
+            (Manager.PlanetOverlay == PlanetOverlay.ClusterAdminCost) ||
+            (Manager.PlanetOverlay == PlanetOverlay.FormationDate)
         );
         MiscDataToggle.isOn = (
             (Manager.PlanetOverlay == PlanetOverlay.Temperature) ||
@@ -199,7 +204,8 @@ public class OverlayDialogPanelScript : MenuPanelScript
             (Manager.PlanetOverlay == PlanetOverlay.UpdateSpan) ||
             (Manager.PlanetOverlay == PlanetOverlay.Migration) ||
             (Manager.PlanetOverlay == PlanetOverlay.MigrationPressure) ||
-            (Manager.PlanetOverlay == PlanetOverlay.PolityMigrationPressure)
+            (Manager.PlanetOverlay == PlanetOverlay.PolityMigrationPressure) ||
+            (Manager.PlanetOverlay == PlanetOverlay.HumanArrival)
         );
 
         PopDensityToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.PopDensity);
@@ -223,6 +229,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
         DistancesToCoresToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.FactionCoreDistance);
         PolityClustersToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.PolityCluster);
         ClusterAdminCostToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.ClusterAdminCost);
+        FormationDateToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.FormationDate);
 
         TemperatureToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.Temperature);
         RainfallToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.Rainfall);
@@ -240,6 +247,7 @@ public class OverlayDialogPanelScript : MenuPanelScript
         MigrationToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.Migration);
         MigrationPressureToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.MigrationPressure);
         PolityMigrationPressureToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.PolityMigrationPressure);
+        HumanArrivalToggle.isOn = (Manager.PlanetOverlay == PlanetOverlay.HumanArrival);
 
         DisplayRoutesToggle.isOn = Manager.DisplayRoutes;
         DisplayGroupActivityToggle.isOn = Manager.DisplayGroupActivity;

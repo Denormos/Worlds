@@ -74,7 +74,9 @@ public enum PlanetOverlay
     UpdateSpan,
     Migration,
     PolityCluster,
-    ClusterAdminCost
+    ClusterAdminCost,
+    FormationDate,
+    HumanArrival
 }
 
 public enum OverlayColorId
@@ -3376,6 +3378,10 @@ public class Manager
                 color = SetPolitySelectionOverlayColor(cell, color);
                 break;
 
+            case PlanetOverlay.FormationDate:
+                color = SetFormationDateOverlayColor(cell, color);
+                break;
+
             case PlanetOverlay.Temperature:
                 color = SetTemperatureOverlayColor(cell, color);
                 break;
@@ -3450,6 +3456,10 @@ public class Manager
 
             case PlanetOverlay.Migration:
                 color = SetMigrationOverlayColor(cell, color);
+                break;
+
+            case PlanetOverlay.HumanArrival:
+                color = SetDateofArrivalOverlayColor(cell, color);
                 break;
 
             default:
@@ -4129,6 +4139,20 @@ public class Manager
 
                 color = (color * (1 - totalProminenceValueFactor)) + (mixedPolityColor * totalProminenceValueFactor);
             }
+        }
+
+        return color;
+    }
+
+    private static Color SetFormationDateOverlayColor(TerrainCell cell, Color color)
+    {
+        if(cell.EncompassingTerritory != null)
+        {
+            Polity territoryPolity = cell.EncompassingTerritory.Polity;
+
+            float value = (float)territoryPolity.FormationDate / CurrentWorld.CurrentDate;
+
+            color = new Color(value, value/2f, 1f-value);
         }
 
         return color;
@@ -5046,6 +5070,19 @@ public class Manager
         else if (cell.Group != null)
         {
             color = GetUnincorporatedGroupColor();
+        }
+
+        return color;
+    }
+
+    private static Color SetDateofArrivalOverlayColor(TerrainCell cell, Color color)
+    {
+
+        if(cell.Group != null)
+        {
+            float value = (float)cell.Group.DateofHumanArrival / CurrentWorld.CurrentDate;
+
+            color = new Color(value, value/2f, 1f-value);
         }
 
         return color;

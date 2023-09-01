@@ -1758,6 +1758,8 @@ public class World : ISynchronizable, IWorldDateGetter
 
     public void AddGroup(CellGroup group)
     {
+        group.DateofHumanArrival = CurrentDate;
+
         _cellGroups.Add(group.Id, group);
 
         Manager.AddUpdatedCell(group.Cell, CellUpdateType.GroupTerritoryClusterAndLanguage, CellUpdateSubType.AllButTerrain);
