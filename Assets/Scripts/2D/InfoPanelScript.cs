@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,17 +41,7 @@ public class InfoPanelScript : MonoBehaviour
             population += group.Population;
         }
 
-        string populationstr = population.ToString();
-
-        if(populationstr.Length>3){
-            populationstr = populationstr.Insert(populationstr.Length-3,"."); 
-            if(populationstr.Length>7){
-                populationstr = populationstr.Insert(populationstr.Length-7,".");
-                if(populationstr.Length>11){
-                    populationstr = populationstr.Insert(populationstr.Length-11,".");
-                }
-            }
-        }
+        string populationstr = FormatNumber(population.ToString());
         
         InfoText.text += "\nTotal Population of the World: " + populationstr;
         
@@ -254,35 +245,50 @@ public class InfoPanelScript : MonoBehaviour
         InfoText.text += "\n";
         InfoText.text += "\nTotal Area: " + region.TotalArea + " Km^2";
 
+        List<TerrainCell> terrainCells = region.GetCells().ToList();
+
+        int population = 0;
+
+        foreach(TerrainCell c in terrainCells)
+        {
+            if( c.Group == null) continue;
+            population += c.Group.Population;
+        }
+
+        string populationstr = FormatNumber(population.ToString());
+        
+        InfoText.text += "\nTotal Population in the Region: " + populationstr;
+
         InfoText.text += "\n";
         InfoText.text += "\nCoast Percentage: " + region.CoastPercentage.ToString("P");
         InfoText.text += "\nWater Percentage: " + region.WaterPercentage.ToString("P");
 
         InfoText.text += "\n";
-        InfoText.text += "\nAverage Altitude: " + region.AverageAltitude + " meters";
-        InfoText.text += "\nAverage Rainfall: " + region.AverageRainfall + " mm / year";
-        InfoText.text += "\nAverage Flowing Water: " + region.AverageFlowingWater + " mm";
-        InfoText.text += "\nAverage Temperature: " + region.AverageTemperature + " C";
+        InfoText.text += "\nAvg. Altitude: " + region.AverageAltitude + " meters";
+        InfoText.text += "\nAvg. Rainfall: " + region.AverageRainfall + " mm / year";
+        InfoText.text += "\nAvg. Flowing Water: " + region.AverageFlowingWater + " mm";
+        InfoText.text += "\nAvg. Temperature: " + region.AverageTemperature + " C";
         InfoText.text += "\n";
 
-        InfoText.text += "\nMin Region Altitude: " + region.MinAltitude + " meters";
-        InfoText.text += "\nMax Region Altitude: " + region.MaxAltitude + " meters";
-        InfoText.text += "\nAverage Border Altitude: " + region.AverageOuterBorderAltitude + " meters";
+        InfoText.text += "\nMin. Region Altitude: " + region.MinAltitude + " meters";
+        InfoText.text += "\nMax. Region Altitude: " + region.MaxAltitude + " meters";
+        InfoText.text += "\nAvg. Border Altitude: " + region.AverageOuterBorderAltitude + " meters";
         InfoText.text += "\n";
 
+        InfoText.text += "\nBiomes:";
         for (int i = 0; i < region.PresentBiomeIds.Count; i++)
         {
             float percentage = region.BiomePresences[i];
 
-            InfoText.text += "\nBiome: " + region.PresentBiomeIds[i];
+            InfoText.text += "\n" + region.PresentBiomeIds[i];
             InfoText.text += " (" + percentage.ToString("P") + ")";
         }
 
         InfoText.text += "\n";
-        InfoText.text += "\nAverage Survivability: " + region.AverageSurvivability.ToString("P");
-        InfoText.text += "\nAverage Foraging Capacity: " + region.AverageForagingCapacity.ToString("P");
-        InfoText.text += "\nAverage Accessibility: " + region.AverageAccessibility.ToString("P");
-        InfoText.text += "\nAverage Arability: " + region.AverageArability.ToString("P");
+        InfoText.text += "\nAvg. Survivability: " + region.AverageSurvivability.ToString("P");
+        InfoText.text += "\nAvg. Foraging Capacity: " + region.AverageForagingCapacity.ToString("P");
+        InfoText.text += "\nAvg. Accessibility: " + region.AverageAccessibility.ToString("P");
+        InfoText.text += "\nAvg. Arability: " + region.AverageArability.ToString("P");
     }
 
     private void AddCellDataToInfoPanel_FarmlandDistribution(TerrainCell cell)
@@ -394,6 +400,20 @@ public class InfoPanelScript : MonoBehaviour
 
             return;
         }
+
+        List<CellGroup> groups = Manager.CurrentWorld.GetAllGroups();
+
+        int languagePopulation = 0;
+
+        foreach (CellGroup g in groups)
+        {
+            if (groupLanguage != g.Culture.Language) continue;
+            languagePopulation += g.Population;
+        }
+
+        string languagePopulationstr = FormatNumber(languagePopulation.ToString());
+        
+        InfoText.text += "\nNumber of language speakers: " + languagePopulationstr;
 
         InfoText.text += "\n\tPredominant language at location: " + groupLanguage;
     }
@@ -1470,5 +1490,19 @@ public class InfoPanelScript : MonoBehaviour
             else
                 AddCellDataToInfoPanel_Terrain(cell);
         }
+    }
+
+    private string FormatNumber(string input)
+    {
+        if(input.Length>3){
+            input = input.Insert(input.Length-3,"."); 
+            if(input.Length>7){
+                input = input.Insert(input.Length-7,".");
+                if(input.Length>11){
+                    input = input.Insert(input.Length-11,".");
+                }
+            }
+        }
+        return input;
     }
 }
