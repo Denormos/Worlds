@@ -1699,6 +1699,8 @@ public class GuiManagerScript : MonoBehaviour
 
     public void ResetWorld()
     {
+        ResetGuiManagerState();
+
         Manager.ResetWorld();
         
         MainMenuDialogPanelScript.SetVisible(false);

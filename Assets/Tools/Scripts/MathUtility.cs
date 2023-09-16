@@ -421,7 +421,7 @@ public static class MathUtility
 
         if (value >= max)
             return 1f;
-
+        return value;
         value = 31623f * value / max;
 
         if (value >= 100f)

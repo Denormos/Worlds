@@ -45,3 +45,7 @@ agents: clan leaders
 Polity: state
 
 Territory: Area of a polity
+
+"bugs" i found
+public static void UpdateMapOverlayTextureColorsFromCell()
+        //This method causes a bug where the shown color/data doesnt correspond to the real data because cells dont get updated all the time
